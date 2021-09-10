@@ -1,0 +1,40 @@
+{
+  "name": "notorium-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d dist --source-maps",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.js --exec babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OsvaldoNegrellos14/notorium-backend.git"
+  },
+  "author": "Macacorp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OsvaldoNegrellos14/notorium-backend/issues"
+  },
+  "homepage": "https://github.com/OsvaldoNegrellos14/notorium-backend#readme",
+  "dependencies": {
+    "bcrypt": "5.0.1",
+    "cors": "2.8.5",
+    "dotenv": "10.0.0",
+    "express": "4.17.1",
+    "jsonwebtoken": "8.5.1",
+    "mongoose": "6.0.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.15.4",
+    "@babel/core": "7.15.5",
+    "@babel/node": "7.15.4",
+    "@babel/preset-env": "7.15.6",
+    "nodemon": "2.0.12",
+    "standard": "16.0.3"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
+}
