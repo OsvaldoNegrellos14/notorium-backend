@@ -8,7 +8,17 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   status: { type: Boolean, required: true, default: true },
   schedules: [{ type: Schema.Types.ObjectId, ref: 'Schedule' }],
-  pomodoro: { type: Schema.Types.ObjectId, ref: 'Pomodoro' },
+  // TODO falta agregar los metodos de actualizacion de las notificaciones en el usuario
+  pomodoro: {
+    notification: {
+      notifiaction_in_desktop: { type: Boolean, default: false },
+      alarma: { type: Boolean, default: true },
+      time_notify_before: { type: Number, required: true, default: 10 },
+      volume: { type: Number, default: 50 },
+      time_fade: { type: Number, default: 5 }
+    },
+    history_pomodoros: [{ type: Schema.Types.ObjectId, ref: 'HistoryPomodoro' }]
+  },
   routines: [{ type: Schema.Types.ObjectId, ref: 'Routine' }],
   notes: [{ type: Schema.Types.ObjectId, ref: 'Note' }],
   reminders: [{ type: Schema.Types.ObjectId, ref: 'Reminder' }]

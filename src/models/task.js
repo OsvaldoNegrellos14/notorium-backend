@@ -6,7 +6,8 @@ const taskSchema = new Schema({
   time_aprox: { type: Number, required: true },
   date_at_created: { type: Date, required: true, default: Date.now() },
   date_at_updated: { type: Date, required: true, default: Date.now() },
-  status: { type: Boolean, required: true, default: true }
+  status: { type: Boolean, required: true, default: true },
+  history_pomodoro: { type: Schema.Types.ObjectId, ref: 'HistoryPomodoro' }
 })
 
 taskSchema.set('toJSON', {

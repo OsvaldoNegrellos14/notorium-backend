@@ -65,7 +65,7 @@ export const deleteNoteById = async (req, res, next) => {
     await Note.findByIdAndRemove(noteId)
     user.notes = notes
     await user.save()
-    res.status(200).json({ status: true, info: notes, user: user })
+    res.status(200).json({ status: true, info: 'note deleted' })
   } catch (error) {
     console.log(error)
     next(error)
