@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import mongodb, { Schema } from 'mongoose'
-import Task from './task'
 
 const historySchema = new Schema({
   name: { type: String, required: true, minlength: 1 },
@@ -11,7 +10,8 @@ const historySchema = new Schema({
   tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }],
   date_at_created: { type: Date, required: true, default: Date.now() },
   date_at_updated: { type: Date, required: true, default: Date.now() },
-  status: { type: Boolean, required: true, default: true }
+  status: { type: Boolean, required: true, default: true },
+  user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 
 historySchema.set('toJSON', {
