@@ -5,7 +5,7 @@ const historySchema = new Schema({
   name: { type: String, required: true, minlength: 1 },
   duration: { type: Number, required: true },
   rest_duration: { type: Number, required: true },
-  time_format: { type: String, enum: ['2:00', '12:00'] },
+  time_format: { type: String },
   category: { type: String },
   tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }],
   date_at_created: { type: Date, required: true, default: Date.now() },

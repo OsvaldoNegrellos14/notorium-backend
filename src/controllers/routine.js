@@ -12,7 +12,7 @@ export const createRoutine = async (req, res, next) => {
   })
   try {
     const savedRoutine = await newRoutine.save()
-    user.reminders = user.reminders.concat(savedRoutine._id)
+    user.routines = user.routines.concat(savedRoutine._id)
     await user.save()
     res.status(200).json({ status: true, info: savedRoutine })
   } catch (error) {

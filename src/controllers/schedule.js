@@ -15,7 +15,7 @@ export const createSchedule = async (req, res, next) => {
   })
   try {
     const savedSchedule = await newSchedule.save()
-    user.reminders = user.reminders.concat(savedSchedule._id)
+    user.schedules = user.schedules.concat(savedSchedule._id)
     await user.save()
     res.status(200).json({ status: true, info: savedSchedule })
   } catch (error) {
