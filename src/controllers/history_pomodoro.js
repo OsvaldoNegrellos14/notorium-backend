@@ -3,11 +3,12 @@ import HistoryPomodoro from '../models/history_pomodoro'
 import User from '../models/user'
 
 export const createHistoryPomodoro = async (req, res, next) => {
-  const { name, duration, restDuration, timeFormat, category, userId } = req.body
+  const { name, duration, description, restDuration, timeFormat, category, userId } = req.body
   const user = await User.findById(userId)
   const newHistoryPomodoro = new HistoryPomodoro({
     name,
     duration,
+    description,
     rest_duration: restDuration,
     time_format: timeFormat,
     category,
@@ -46,10 +47,11 @@ export const getAllHistoryPomodoro = async (req, res, next) => {
 export const updateHistoryPomodoro = async (req, res, next) => {
   try {
     const { historyPomodoroId } = req.params
-    const { name, duration, restDuration, timeFormat, category } = req.body
+    const { name, duration, description, restDuration, timeFormat, category } = req.body
     const historyPomodoroUpdate = {
       name,
       duration,
+      description,
       rest_duration: restDuration,
       time_format: timeFormat,
       category,

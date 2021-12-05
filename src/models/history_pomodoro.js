@@ -4,7 +4,8 @@ import mongodb, { Schema } from 'mongoose'
 const historySchema = new Schema({
   name: { type: String, required: true, minlength: 1 },
   duration: { type: Number, required: true },
-  rest_duration: { type: Number, required: true },
+  description: { type: String, required: true },
+  rest_duration: { type: Number, required: false },
   time_format: { type: String },
   category: { type: String },
   tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }],
