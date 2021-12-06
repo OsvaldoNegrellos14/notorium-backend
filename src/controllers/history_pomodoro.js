@@ -69,7 +69,7 @@ export const deleteHistoryPomodoro = async (req, res, next) => {
     const { historyPomodoroId, userId } = req.params
     const user = await User.findById(userId)
     // res.json(user)
-    const historyPomodoros = await user.history_pomodoros.filter((historyPomodoro) => historyPomodoro != historyPomodoroId)
+    const historyPomodoros = await user.pomodoro.history_pomodoros.filter((historyPomodoro) => historyPomodoro._id != historyPomodoroId)
     await HistoryPomodoro.findByIdAndRemove(historyPomodoroId)
     user.pomodoro.history_pomodoros = historyPomodoros
     await user.save()
