@@ -40,6 +40,29 @@ export const getAllReminder = async (req, res, next) => {
     next(error)
   }
 }
+export const getFilterDate = async (req, res, next) => {
+  try {
+    const { userId, dateFilter } = req.params
+    const reminders = await Reminder.find({ user: userId })
+    const resultReminder = reminders.map((obf) => {
+      const dia = obf.date_at_created.getDate()
+      const concero = `0${dia}`
+      const mes = obf.date_at_created.getMonth()
+      const anio = obf.date_at_created.getFullYear()
+      const fechha = `${anio}-${mes + 1}-${dia.toString().length === 2 ? dia : concero}`
+      if (dateFilter == fechha) {
+        return obf
+      }
+      return null
+      // else {
+      //   return '404'
+      // }
+    })
+    res.status(200).json({ status: true, info: resultReminder })
+  } catch (error) {
+    next(error)
+  }
+}
 
 export const updateReminderById = async (req, res, next) => {
   try {
